@@ -12,6 +12,7 @@ import { RoutingModule } from './routing.module';
 import { SidebarplaceholderComponent } from './sidebarplaceholder/sidebarplaceholder.component';
 import { ListcasesComponent } from './listcases/listcases.component';
 import { ViewerComponent } from './viewer/viewer.component';
+import { HotspotService } from './hotspot.service';
 
 import { HttpModule } from "@angular/http";
 
