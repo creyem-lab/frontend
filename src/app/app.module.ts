@@ -13,7 +13,7 @@ import { SidebarplaceholderComponent } from './sidebarplaceholder/sidebarplaceho
 import { ListcasesComponent } from './listcases/listcases.component';
 import { ViewerComponent } from './viewer/viewer.component';
 
-import { HttpClientModule } from '@angular/common/http';
+import { HttpModule } from "@angular/http";
 
 initialize(INITIAL_STATE, {
   hotLoad: !environment.production,
@@ -29,10 +29,10 @@ initialize(INITIAL_STATE, {
   ],
   imports: [
     BrowserModule,
-    HttpClientModule,
+    HttpModule,
     RoutingModule
   ],
-  providers: [STORES, SERVICES],
+  providers: [STORES, SERVICES, HttpModule],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

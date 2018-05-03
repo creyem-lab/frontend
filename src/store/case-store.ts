@@ -16,10 +16,12 @@ export class CaseStore extends Store {
   }
 
   @action()
-  index(state: AppState, action: CaseIndexAction): AppState {
-    return {
-      cases: action.results
-    }
-  }
+  index(state: AppState, action: CaseIndexAction): Observable<AppState> {
+    return this.caseService
+      .fetch()
+      .map((data : any) => {
+      return { cases: data };
+    });
+  }  
 
 }
