@@ -3,18 +3,25 @@ import { Injectable } from '@angular/core';
 import { Hotspot } from '../state/hotspot';
 
 import { HOTSPOTS } from './mock-hotspots';
+import { Http } from "@angular/http";
 
 import { Observable } from 'rxjs/Observable';
 import { of } from 'rxjs/observable/of';
+
+import { environment } from '../environments/environment';
 
 
 @Injectable()
 export class HotspotService {
 
-  constructor() { }
+  private readonly url = '/hotspots/'
 
-  getHotspots(): Observable<Hotspot[]> {
-    return of(HOTSPOTS);
-  }
+  constructor(private http: Http) { }
+
+  fetch(caseId: string): Observable<any> {
+    return this.http
+      .get(environment.apiBase + this.url + caseId)
+      .map((res) => res.json());
+  }  
 
 }

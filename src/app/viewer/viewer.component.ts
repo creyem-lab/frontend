@@ -13,7 +13,7 @@ import '../../../node_modules/pannellum/build/pannellum.js';
 })
 export class ViewerComponent implements OnInit {
 
-    hotspots: Hotspot[];
+    hotspots: any = [];
 
   constructor(private hotspotService: HotspotService) { }
 
@@ -23,9 +23,16 @@ export class ViewerComponent implements OnInit {
   }
 
   getHotSpots(): void {
-      this.hotspotService.getHotspots()
+      this.hotspotService.fetch("5aeafdc1dad2e63347156012")
         .subscribe((hotspots: Hotspot[]) => {
+            hotspots.forEach((hotspot: Hotspot) => {
+                this.hotspots.push({id: hotspot.id, pitch: hotspot.pitch,
+yaw: hotspot.yaw,
+type: hotspot.hotspotType,
+text: hotspot.text})
+             })
             this.hotspots = hotspots;
+            
             console.log(this.hotspots);
             var view = pannellum.viewer('panoramaContainer', {
                 "type": "equirectangular",
