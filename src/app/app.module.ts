@@ -18,6 +18,7 @@ import { HttpModule } from "@angular/http";
 import { HotspotsidebarComponent } from './hotspotsidebar/hotspotsidebar.component';
 import { NewcaseComponent } from './newcase/newcase.component';
 import { NewannotationComponent } from './newannotation/newannotation.component';
+import { HotspotDetailComponent } from './hotspot-detail/hotspot-detail.component';
 
 initialize(INITIAL_STATE, {
   hotLoad: !environment.production,
@@ -33,6 +34,7 @@ initialize(INITIAL_STATE, {
     HotspotsidebarComponent,
     NewcaseComponent,
     NewannotationComponent
+    HotspotDetailComponent
   ],
   imports: [
     BrowserModule,
