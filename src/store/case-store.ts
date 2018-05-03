@@ -39,7 +39,7 @@ export class CaseStore extends Store {
   }   
 
   @action()
-    getHotspots(state: AppState, action: HotspotAction): Observable<AppState> {
+  getHotspots(state: AppState, action: HotspotAction): Observable<AppState> {
       return this.hotspotService
         .fetch(action.caseId)
         .map((data : any) => {
