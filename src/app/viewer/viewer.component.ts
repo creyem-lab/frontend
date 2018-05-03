@@ -5,14 +5,13 @@ declare var pannellum: any;
 import '../../../node_modules/pannellum/build/pannellum.js';
 
 @Component({
-  selector: 'app-home',
-  templateUrl: './home.component.html',
-  styleUrls: ['./home.component.scss']
+  selector: 'app-viewer',
+  templateUrl: './viewer.component.html',
+  styleUrls: ['./viewer.component.scss']
 })
-export class HomeComponent implements OnInit {
+export class ViewerComponent implements OnInit {
 
-  constructor() {
-   }
+  constructor() { }
 
   ngOnInit() {
     var view = pannellum.viewer('panoramaContainer', {

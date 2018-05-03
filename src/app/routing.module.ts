@@ -3,6 +3,7 @@ import { RouterModule, Routes } from '@angular/router';
 
 import { ListcasesComponent } from './listcases/listcases.component';
 import { SidebarplaceholderComponent } from './sidebarplaceholder/sidebarplaceholder.component';
+import { ViewerComponent } from './viewer/viewer.component';
 
 const routes: Routes = [
   { path: '', redirectTo: '/list', pathMatch: 'full' },
@@ -12,7 +13,14 @@ const routes: Routes = [
       { path: '', component: ListcasesComponent },
       { path: '', component: SidebarplaceholderComponent, outlet: 'sidebar' },
     ]
-  }
+  },
+  {   
+    path: 'case',
+    children: [
+      { path: '', component: ViewerComponent },
+      { path: '', component: SidebarplaceholderComponent, outlet: 'sidebar' },
+    ]
+  }  
 ];
 
 @NgModule({

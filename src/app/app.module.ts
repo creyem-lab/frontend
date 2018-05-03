@@ -6,13 +6,15 @@ import { AppComponent } from './app.component';
 import { RoutingModule } from './routing.module';
 import { SidebarplaceholderComponent } from './sidebarplaceholder/sidebarplaceholder.component';
 import { ListcasesComponent } from './listcases/listcases.component';
+import { ViewerComponent } from './viewer/viewer.component';
 
 
 @NgModule({
   declarations: [
     AppComponent,
     SidebarplaceholderComponent,
-    ListcasesComponent
+    ListcasesComponent,
+    ViewerComponent
   ],
   imports: [
     BrowserModule,
