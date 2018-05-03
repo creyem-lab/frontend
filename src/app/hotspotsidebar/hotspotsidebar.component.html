@@ -1,5 +1,6 @@
-
 <div *ngIf="!currentHotSpot">
+<h4 style="padding:5px 0px 0px 10px">Cards</h4>
+<hr>
 <div class="card-padding" *ngFor="let hotspot of hotspots" (click)="toPos($event, hotspot)">
   <div class="card text-white bg-secondary mb-3">
     <div class="card-body">
