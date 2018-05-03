@@ -17,4 +17,10 @@ export class CaseService {
       .map((res) => res.json());
   }  
 
+  store(newCase): Observable<any> {
+    return this.http
+      .post(environment.apiBase + this.url, newCase)
+      .map((res) => res.json());
+  }    
+
 }

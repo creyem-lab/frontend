@@ -4,6 +4,7 @@ import { RouterModule, Routes } from '@angular/router';
 import { ListcasesComponent } from './listcases/listcases.component';
 import { SidebarplaceholderComponent } from './sidebarplaceholder/sidebarplaceholder.component';
 import { ViewerComponent } from './viewer/viewer.component';
+import { NewcaseComponent } from './newcase/newcase.component';
 
 const routes: Routes = [
   { path: '', redirectTo: '/list', pathMatch: 'full' },
@@ -14,6 +15,13 @@ const routes: Routes = [
       { path: '', component: SidebarplaceholderComponent, outlet: 'sidebar' },
     ]
   },
+  {   
+    path: 'newcase',
+    children: [
+      { path: '', component: NewcaseComponent },
+      { path: '', component: SidebarplaceholderComponent, outlet: 'sidebar' },
+    ]
+  },  
   {   
     path: 'case',
     children: [

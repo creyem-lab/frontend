@@ -7,6 +7,7 @@ import { Observer } from 'rxjs/Rx'
 import { CaseService } from './../service/case.service'
 
 import { CaseIndexAction } from '../action'
+import { NewCaseAction } from '../action'
 
 @Injectable()
 export class CaseStore extends Store {
@@ -23,5 +24,17 @@ export class CaseStore extends Store {
       return { cases: data };
     });
   }  
+
+  @action()
+  newCase(state: AppState, action: NewCaseAction): Observable<AppState> {
+    return this.caseService
+      .store(action.newCase)
+      .map((data : any) => {
+        
+        state.cases = (state.cases || []).concat(action.newCase);
+        return state;  
+
+    });
+  }    
 
 }
