@@ -17,6 +17,7 @@ import { ViewerComponent } from './viewer/viewer.component';
 import { HttpModule } from "@angular/http";
 import { HotspotsidebarComponent } from './hotspotsidebar/hotspotsidebar.component';
 import { NewcaseComponent } from './newcase/newcase.component';
+import { NewannotationComponent } from './newannotation/newannotation.component';
 
 initialize(INITIAL_STATE, {
   hotLoad: !environment.production,
@@ -30,7 +31,8 @@ initialize(INITIAL_STATE, {
     ListcasesComponent,
     ViewerComponent,
     HotspotsidebarComponent,
-    NewcaseComponent
+    NewcaseComponent,
+    NewannotationComponent
   ],
   imports: [
     BrowserModule,

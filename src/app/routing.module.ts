@@ -6,6 +6,7 @@ import { SidebarplaceholderComponent } from './sidebarplaceholder/sidebarplaceho
 import { HotspotsidebarComponent } from './hotspotsidebar/hotspotsidebar.component';
 import { ViewerComponent } from './viewer/viewer.component';
 import { NewcaseComponent } from './newcase/newcase.component';
+import { NewannotationComponent } from './newannotation/newannotation.component';
 
 const routes: Routes = [
   { path: '', redirectTo: '/list', pathMatch: 'full' },
@@ -24,10 +25,17 @@ const routes: Routes = [
     ]
   },  
   {
+    path: 'case/:id/annotation',
+    children: [
+      { path: '', component: ViewerComponent },
+      { path: '', component: NewannotationComponent, outlet: 'sidebar' },
+    ]
+  },      
+  {
     path: 'case/:id',
     children: [
       { path: '', component: ViewerComponent },
-      { path: '', component: HotspotsidebarComponent, outlet: 'hotspotsidebar' },
+      { path: '', component: HotspotsidebarComponent, outlet: 'sidebar' },
     ]
   }  
 ];

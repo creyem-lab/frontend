@@ -14,14 +14,20 @@ import { environment } from '../environments/environment';
 @Injectable()
 export class HotspotService {
 
-  private readonly url = '/hotspots/'
+  private readonly url = '/hotspots'
 
   constructor(private http: Http) { }
 
   fetch(caseId: string): Observable<any> {
     return this.http
-      .get(environment.apiBase + this.url + caseId)
+      .get(environment.apiBase + this.url + "/" + caseId)
       .map((res) => res.json());
   }  
+
+  store(caseId, newHotspot): Observable<any> {
+    return this.http
+      .post(environment.apiBase + this.url, newHotspot)
+      .map((res) => res.json());
+  }    
 
 }

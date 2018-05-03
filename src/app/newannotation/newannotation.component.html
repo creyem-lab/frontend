@@ -1,0 +1,18 @@
+<div class="container-fluid">
+  <br/>
+  <a href="/case/{{caseId}}" class="btn btn-primary btn-block">Back to case</a>
+  <hr/>
+<form (ngSubmit)="submitNewAnnotation()" [formGroup]="newAnnotationForm">
+  <div class="form-group">
+    <label for="title">Name</label>
+    <input formControlName="title" type="text" class="form-control" id="title" placeholder="Enter the annotation title">
+    <small class="form-text text-muted">Enter the name of the new annotation.</small>
+  </div>
+  <div class="form-group">
+    <label for="description">Description</label>
+    <textarea formControlName="description" id="description" name="description" class="form-control"></textarea>
+    <small class="form-text text-muted">Enter a description for the annotation.</small>
+  </div>     
+  <button type="submit" class="btn btn-success btn-block">Create annotation</button>                      
+</form>  
+</div>

@@ -1,16 +1,16 @@
 <div class="container-fluid">
     <div class="row">
 
-      <div class="col-sm-4 card-padding">
+      <div class="col-sm-4 card-padding" *ngFor="let case of cases">
 
-        <div class="card" *ngFor="let case of cases">
-          <img class="card-img-top img-fluid" src="http://placehold.it/750x325" alt="Card image cap">
-          <div class="card-block">
+        <div class="card">
+          <img class="card-img-top img-fluid" src="https://cryemlab.blob.core.windows.net/cases/{{case._id}}.jpg" alt="Card image cap">
+          <div class="card-body">
             <h4 class="card-title">{{case.title}}</h4>
             <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
           </div>
-          <div class="card-block">
-            <a [routerLink]="['/case',case._id]">View case</a>
+          <div class="card-footer">
+            <a class="btn btn-block btn-success" [routerLink]="['/case',case._id]">View case</a>
           </div>
         </div>
 

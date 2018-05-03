@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Hotspot } from '../../state/hotspot';
 import { HotspotService } from '../../service/hotspot.service';
 import { ActivatedRoute } from '@angular/router';
+import { Router } from '@angular/router';
 
 declare var pannellum: any;
 
@@ -18,7 +19,7 @@ export class ViewerComponent implements OnInit {
     caseId: any;
     view: any;
 
-    constructor(private route: ActivatedRoute, private hotspotService: HotspotService) { }
+    constructor(private route: ActivatedRoute, private router : Router, private hotspotService: HotspotService) { }
 
     ngOnInit() {
         this.route.parent.params.subscribe(params => {
@@ -36,28 +37,32 @@ export class ViewerComponent implements OnInit {
                         id: hotspot.id, pitch: hotspot.pitch,
                         yaw: hotspot.yaw,
                         type: hotspot.hotspotType,
-                        text: hotspot.text,
-                        clickHandlerFunc: handleclick
+                        text: hotspot.text
                     })
                 })
                 this.hotspots = hotspots;
 
                 this.view = pannellum.viewer('panoramaContainer', {
                      "type": "equirectangular",
-                    "panorama": '../../assets/equirect.jpg',
+                    "panorama": "https://cryemlab.blob.core.windows.net/cases/" + this.caseId + ".jpg",
                     "autoLoad": true,
                     "hotSpots": this.hotspots
                 });
 
-                this.view.on('mousedown', function(event) {
-                    console.log(event);
+                var viewer = this.view;
+                var appRouter = this.router;
+                var currentRoute = this.route;
+                var currentCaseId = this.caseId; 
+
+                this.view.on('mouseup', function(event, args) {
+
+                    if (event.button != 0) return;
+
+                    let pitchYaw = viewer.mouseEventToCoords(event);
+                    appRouter.navigateByUrl("/case/" + currentCaseId + "/annotation?pitch=" + pitchYaw[0] + "&yaw=" + pitchYaw[1]);
                 })
             });
     }
 
  
 }
-
-   function handleclick() {
-                            alert("test")
-                        }
