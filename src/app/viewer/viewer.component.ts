@@ -24,7 +24,7 @@ export class ViewerComponent extends DataObserver implements OnInit {
     caseId: any;
     view: any;
 
-    constructor(private route: ActivatedRoute, private hotspotService: HotspotService, public stores: Stores) {
+    constructor(private route: ActivatedRoute, private router: Router, private hotspotService: HotspotService, public stores: Stores) {
         super();
      }
 

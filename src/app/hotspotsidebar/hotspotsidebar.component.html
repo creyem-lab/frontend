@@ -1,25 +1,38 @@
-<div *ngIf="!currentHotSpot">
-<h4 style="padding:5px 0px 0px 10px">Cards</h4>
-<hr>
-<div class="card-padding" *ngFor="let hotspot of hotspots" (click)="toPos($event, hotspot)">
-  <div class="card text-white bg-secondary mb-3">
-    <div class="card-body">
-      <h5 class="card-title" >{{hotspot.text}}</h5>
-    </div>
-  </div>  
-</div>
-</div>
-<div *ngIf="currentHotSpot">
-  <div class="card text-white bg-secondary mb-3">
-     <button type="button" class="btn btn-default" aria-label="Left Align" (click)="clearHotspot()"> <span class="glyphicon glyphicon-menu-left" aria-hidden="true"><</span> </button>      
-    <div class="card-body">
-     <h5 class="card-title">{{currentHotSpot.text}}</h5>
-     <h6 class="card-title">Submitted at {{currentHotSpot.created_at}}</h6>
-     <p>Relevant Evidence:</p>
-     <ul>
-         <li>Fingerprints</li>
-         <li>Footprints</li>
-     </ul>
+<div class="container-fluid">
+
+  <br/>
+  <a [routerLink]="['/list']" class="btn btn-block btn-info">Back to list</a>
+
+  <hr/>
+
+  <div *ngIf="!currentHotSpot">
+  <h4>Cards</h4>
+  <div *ngFor="let hotspot of hotspots" (click)="toPos($event, hotspot)">
+    <div class="card">
+      <div class="card-body">
+        <h5 class="card-title" >{{hotspot.text}}</h5>
+        <p class="card-text">{{hotspot.hotspotType}}</p>
+      </div>
+    </div> 
+    <br/> 
+  </div>
+  </div>
+  <div *ngIf="currentHotSpot">
+
+    <button type="button" class="btn btn-default margin-bottom-btn btn-block" aria-label="Left Align" (click)="clearHotspot()"> <span class="glyphicon glyphicon-menu-left" aria-hidden="true"><</span> </button>      
+
+    <div class="card">
+      <div class="card-body">
+        <h5 class="card-title">{{currentHotSpot.text}}</h5>
+        <h6 class="card-title">Submitted at {{currentHotSpot.created_at}}</h6>
+        <p>Relevant Evidence:</p>
+        <ul>
+            <li>Fingerprints</li>
+            <li>Footprints</li>
+        </ul>
+      </div>
     </div>
   </div>
+
+
 </div>

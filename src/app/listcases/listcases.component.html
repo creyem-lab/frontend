@@ -7,7 +7,7 @@
           <img class="card-img-top img-fluid" src="https://cryemlab.blob.core.windows.net/cases/{{case._id}}.jpg" alt="Card image cap">
           <div class="card-body">
             <h4 class="card-title">{{case.title}}</h4>
-            <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+            <p class="card-text">{{case.title}}, created at {{case.created_at}}</p>
           </div>
           <div class="card-footer">
             <a class="btn btn-block btn-success" [routerLink]="['/case',case._id]">View case</a>

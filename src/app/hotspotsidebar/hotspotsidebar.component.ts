@@ -45,7 +45,7 @@ export class HotspotsidebarComponent extends DataObserver implements OnInit {
   public toPos(event, hotspot) {
       console.log(hotspot);
       this.currentHotSpot = hotspot;
-    new ToPosAction({ x: hotspot.pitch, y: hotspot.yaw }).dispatch();
+      new ToPosAction({ x: hotspot.pitch, y: hotspot.yaw }).dispatch();
   }
 
     public clearHotspot() {

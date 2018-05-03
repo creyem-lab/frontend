@@ -3,13 +3,16 @@ import { FormBuilder, FormGroup, Validators, FormControl } from "@angular/forms"
 import { ActivatedRoute } from '@angular/router';
 import { Router } from '@angular/router';
 import { HotspotService } from '../../service/hotspot.service';
+import { ToPosAction } from '../../action';
+import { Stores } from '../../store';
+import { data, DataObserver } from 'statex/angular';
 
 @Component({
   selector: 'app-newannotation',
   templateUrl: './newannotation.component.html',
   styleUrls: ['./newannotation.component.scss']
 })
-export class NewannotationComponent implements OnInit {
+export class NewannotationComponent extends DataObserver implements OnInit {
 
   newAnnotationForm : FormGroup
 
@@ -18,7 +21,7 @@ export class NewannotationComponent implements OnInit {
   pitch: any
   yaw: any
 
-  constructor(private route: ActivatedRoute, private router : Router, private hotspotService : HotspotService) {
+  constructor(public stores: Stores, private route: ActivatedRoute, private router : Router, private hotspotService : HotspotService) {
 
     this.route.params.subscribe(params => {
        this.caseId = params['id'];
@@ -27,6 +30,9 @@ export class NewannotationComponent implements OnInit {
     this.route.queryParams.subscribe(params => {
        this.pitch = params['pitch'];
        this.yaw = params['yaw'];
+
+       new ToPosAction({ x: this.pitch, y: this.yaw }).dispatch();
+
     });        
 
     this.newAnnotationForm = new FormGroup({

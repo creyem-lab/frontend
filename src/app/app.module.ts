@@ -33,7 +33,7 @@ initialize(INITIAL_STATE, {
     ViewerComponent,
     HotspotsidebarComponent,
     NewcaseComponent,
-    NewannotationComponent
+    NewannotationComponent,
     HotspotDetailComponent
   ],
   imports: [
