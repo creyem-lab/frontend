@@ -36,17 +36,16 @@ export class CaseStore extends Store {
         return state;  
 
     });
-  }    
+  }   
 
-}  @action()
-  getHotspots(state: AppState, action: HotspotAction): Observable<AppState> {
-    return this.hotspotService
-      .fetch(action.caseId)
-      .map((data : any) => {
-        // var newState = state;
-        state.hotspots = data;
-        return state;
-    });
+  @action()
+    getHotspots(state: AppState, action: HotspotAction): Observable<AppState> {
+      return this.hotspotService
+        .fetch(action.caseId)
+        .map((data : any) => {
+          state.hotspots = data;
+          return state;
+      });
   }  
 
 }
