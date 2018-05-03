@@ -4,6 +4,10 @@ export class CaseIndexAction extends Action {
   constructor() { super() }
 }
 
+export class HotspotAction extends Action {
+    constructor(public caseId: string) { super() }
+}
+
 export class NewCaseAction extends Action {
   constructor(public newCase : any) { super() }
 }

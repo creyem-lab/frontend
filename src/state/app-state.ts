@@ -1,3 +1,6 @@
+import { Hotspot } from './hotspot';
+
 export interface AppState {
-  cases?: any
+  cases?: any,
+  hotspots?: Hotspot[]
 }

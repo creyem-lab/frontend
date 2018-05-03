@@ -1,54 +1,63 @@
 import { Component, OnInit } from '@angular/core';
 import { Hotspot } from '../../state/hotspot';
 import { HotspotService } from '../../service/hotspot.service';
+import { ActivatedRoute } from '@angular/router';
 
 declare var pannellum: any;
 
 import '../../../node_modules/pannellum/build/pannellum.js';
 
 @Component({
-  selector: 'app-viewer',
-  templateUrl: './viewer.component.html',
-  styleUrls: ['./viewer.component.scss']
+    selector: 'app-viewer',
+    templateUrl: './viewer.component.html',
+    styleUrls: ['./viewer.component.scss']
 })
 export class ViewerComponent implements OnInit {
 
-    hotspots: Hotspot[];
+    hotspots: any = [];
+    caseId: any;
+    view: any;
 
-  constructor(private hotspotService: HotspotService) { }
+    constructor(private route: ActivatedRoute, private hotspotService: HotspotService) { }
 
-  ngOnInit() {
-      this.getHotSpots();
-
-  }
-
-  getHotSpots(): void {
-      this.hotspotService.getHotspots()
-        .subscribe((hotspots: Hotspot[]) => {
-            this.hotspots = hotspots;
-            console.log(this.hotspots);
-            this.hotspots.forEach(element => {
-                element.createTooltipFunc = hotspot;
-            }
-            )
-            var view = pannellum.viewer('panoramaContainer', {
-                "type": "equirectangular",
-                "panorama": '../../assets/equirect.jpg',
-                "autoLoad": true,
-                "compass": true,
-               "hotSpots": this.hotspots
-            });
+    ngOnInit() {
+        this.route.parent.params.subscribe(params => {
+            this.caseId = params['id']; // (+) converts string 'id' to a number
+            this.getHotSpots();
         });
-        // Hot spot creation function
-function hotspot(hotSpotDiv, args) {
-    hotSpotDiv.classList.add('custom-tooltip');
-    var span = document.createElement('span');
-    span.innerHTML = args;
-    hotSpotDiv.appendChild(span);
-    span.style.width = span.scrollWidth - 20 + 'px';
-    span.style.marginLeft = -(span.scrollWidth - hotSpotDiv.offsetWidth) / 2 + 'px';
-    span.style.marginTop = -span.scrollHeight - 12 + 'px';
-}
-  }
 
+    }
+
+    getHotSpots(): void {
+        this.hotspotService.fetch(this.caseId)
+            .subscribe((hotspots: Hotspot[]) => {
+                hotspots.forEach((hotspot: Hotspot) => {
+                    this.hotspots.push({
+                        id: hotspot.id, pitch: hotspot.pitch,
+                        yaw: hotspot.yaw,
+                        type: hotspot.hotspotType,
+                        text: hotspot.text,
+                        clickHandlerFunc: handleclick
+                    })
+                })
+                this.hotspots = hotspots;
+
+                this.view = pannellum.viewer('panoramaContainer', {
+                     "type": "equirectangular",
+                    "panorama": '../../assets/equirect.jpg',
+                    "autoLoad": true,
+                    "hotSpots": this.hotspots
+                });
+
+                this.view.on('mousedown', function(event) {
+                    console.log(event);
+                })
+            });
+    }
+
+ 
 }
+
+   function handleclick() {
+                            alert("test")
+                        }

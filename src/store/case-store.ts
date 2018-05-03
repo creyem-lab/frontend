@@ -5,14 +5,15 @@ import { Injectable } from '@angular/core'
 import { Observable } from 'rxjs/Rx'
 import { Observer } from 'rxjs/Rx'
 import { CaseService } from './../service/case.service'
+import { HotspotService } from './../service/hotspot.service'
 
-import { CaseIndexAction } from '../action'
+import { CaseIndexAction, HotspotAction } from '../action'
 import { NewCaseAction } from '../action'
 
 @Injectable()
 export class CaseStore extends Store {
 
-  constructor(private caseService: CaseService) {
+  constructor(private caseService: CaseService, private hotspotService: HotspotService) {
     super()
   }
 
@@ -37,4 +38,16 @@ export class CaseStore extends Store {
     });
   }    
 
+}  @action()
+  getHotspots(state: AppState, action: HotspotAction): Observable<AppState> {
+    return this.hotspotService
+      .fetch(action.caseId)
+      .map((data : any) => {
+        // var newState = state;
+        state.hotspots = data;
+        return state;
+    });
+  }  
+
 }
+

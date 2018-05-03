@@ -22,8 +22,7 @@ const routes: Routes = [
       { path: '', component: SidebarplaceholderComponent, outlet: 'sidebar' },
     ]
   },  
-  {   
-    path: 'case',
+    path: 'case/:id',
     children: [
       { path: '', component: ViewerComponent },
       { path: '', component: SidebarplaceholderComponent, outlet: 'sidebar' },
