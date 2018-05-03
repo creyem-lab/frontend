@@ -1,9 +1,24 @@
 
+<div *ngIf="!currentHotSpot">
 <div class="card-padding" *ngFor="let hotspot of hotspots" (click)="toPos($event, hotspot)">
   <div class="card text-white bg-secondary mb-3">
     <div class="card-body">
       <h5 class="card-title" >{{hotspot.text}}</h5>
-      <p class="card-text">Useful info will probz go here</p>
+    </div>
+  </div>
+</div>
+</div>
+<div *ngIf="currentHotSpot">
+  <div class="card text-white bg-secondary mb-3">
+     <button type="button" class="btn btn-default" aria-label="Left Align" (click)="clearHotspot()"> <span class="glyphicon glyphicon-menu-left" aria-hidden="true"><</span> </button>      
+    <div class="card-body">
+     <h5 class="card-title">{{currentHotSpot.text}}</h5>
+     <h6 class="card-title">Submitted at {{currentHotSpot.created_at}}</h6>
+     <p>Relevant Evidence:</p>
+     <ul>
+         <li>Fingerprints</li>
+         <li>Footprints</li>
+     </ul>
     </div>
   </div>
 </div>

@@ -4,6 +4,7 @@ import { RouterModule, Routes } from '@angular/router';
 import { ListcasesComponent } from './listcases/listcases.component';
 import { SidebarplaceholderComponent } from './sidebarplaceholder/sidebarplaceholder.component';
 import { HotspotsidebarComponent } from './hotspotsidebar/hotspotsidebar.component';
+import { HotspotDetailComponent } from './hotspot-detail/hotspot-detail.component';
 import { ViewerComponent } from './viewer/viewer.component';
 import { NewcaseComponent } from './newcase/newcase.component';
 
@@ -28,6 +29,13 @@ const routes: Routes = [
     children: [
       { path: '', component: ViewerComponent },
       { path: '', component: HotspotsidebarComponent, outlet: 'hotspotsidebar' },
+    ]
+  }, 
+    {
+    path: 'case/:id/hotspot/:hotspotid',
+    children: [
+      { path: '', component: ViewerComponent },
+      { path: '', component: HotspotDetailComponent, outlet: 'hotspotdetailcomponent' },
     ]
   }  
 ];
