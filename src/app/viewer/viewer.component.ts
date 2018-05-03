@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Hotspot } from '../../state/hotspot';
 import { HotspotService } from '../../service/hotspot.service';
+import { ActivatedRoute } from '@angular/router';
 
 declare var pannellum: any;
 
@@ -14,16 +15,20 @@ import '../../../node_modules/pannellum/build/pannellum.js';
 export class ViewerComponent implements OnInit {
 
     hotspots: any = [];
+    caseId: any;
 
-  constructor(private hotspotService: HotspotService) { }
+  constructor(private route: ActivatedRoute, private hotspotService: HotspotService) { }
 
   ngOnInit() {
-      this.getHotSpots();
+    this.route.parent.params.subscribe(params => {
+        this.caseId = params['id']; // (+) converts string 'id' to a number
+        this.getHotSpots();        
+    });
 
   }
 
   getHotSpots(): void {
-      this.hotspotService.fetch("5aeafdc1dad2e63347156012")
+      this.hotspotService.fetch(this.caseId)
         .subscribe((hotspots: Hotspot[]) => {
             hotspots.forEach((hotspot: Hotspot) => {
                 this.hotspots.push({id: hotspot.id, pitch: hotspot.pitch,

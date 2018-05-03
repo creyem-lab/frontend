@@ -15,7 +15,7 @@ const routes: Routes = [
     ]
   },
   {   
-    path: 'case',
+    path: 'case/:id',
     children: [
       { path: '', component: ViewerComponent },
       { path: '', component: SidebarplaceholderComponent, outlet: 'sidebar' },
