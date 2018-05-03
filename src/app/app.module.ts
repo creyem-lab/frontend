@@ -3,14 +3,16 @@ import { NgModule } from '@angular/core';
 
 
 import { AppComponent } from './app.component';
-import { HomeComponent } from './home/home.component';
 import { RoutingModule } from './routing.module';
+import { SidebarplaceholderComponent } from './sidebarplaceholder/sidebarplaceholder.component';
+import { ListcasesComponent } from './listcases/listcases.component';
 
 
 @NgModule({
   declarations: [
     AppComponent,
-    HomeComponent
+    SidebarplaceholderComponent,
+    ListcasesComponent
   ],
   imports: [
     BrowserModule,
