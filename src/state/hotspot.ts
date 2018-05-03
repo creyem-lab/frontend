@@ -2,7 +2,7 @@ export class Hotspot {
     id: number;
     pitch: number;
     yaw: number;
-    type: string;
+    hotspotType: string;
     createTooltipFunc?: Function;
     text: string;
 
