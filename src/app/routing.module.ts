@@ -3,6 +3,7 @@ import { RouterModule, Routes } from '@angular/router';
 
 import { ListcasesComponent } from './listcases/listcases.component';
 import { SidebarplaceholderComponent } from './sidebarplaceholder/sidebarplaceholder.component';
+import { HotspotsidebarComponent } from './hotspotsidebar/hotspotsidebar.component';
 import { ViewerComponent } from './viewer/viewer.component';
 
 const routes: Routes = [
@@ -18,7 +19,7 @@ const routes: Routes = [
     path: 'case/:id',
     children: [
       { path: '', component: ViewerComponent },
-      { path: '', component: SidebarplaceholderComponent, outlet: 'sidebar' },
+      { path: '', component: HotspotsidebarComponent, outlet: 'hotspotsidebar' },
     ]
   }  
 ];

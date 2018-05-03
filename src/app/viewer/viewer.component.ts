@@ -32,9 +32,9 @@ export class ViewerComponent implements OnInit {
         .subscribe((hotspots: Hotspot[]) => {
             hotspots.forEach((hotspot: Hotspot) => {
                 this.hotspots.push({id: hotspot.id, pitch: hotspot.pitch,
-yaw: hotspot.yaw,
-type: hotspot.hotspotType,
-text: hotspot.text})
+                                    yaw: hotspot.yaw,
+                                    type: hotspot.hotspotType,
+                                    text: hotspot.text})
              })
             this.hotspots = hotspots;
             
