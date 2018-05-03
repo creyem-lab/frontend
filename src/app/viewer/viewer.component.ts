@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { Hotspot } from '../hotspot';
-import { HotspotService } from '../hotspot.service';
+import { Hotspot } from '../../state/hotspot';
+import { HotspotService } from '../../service/hotspot.service';
 
 declare var pannellum: any;
 

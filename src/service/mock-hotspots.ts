@@ -1,4 +1,4 @@
-import { Hotspot } from './hotspot';
+import { Hotspot } from '../state/hotspot';
 
 export const HOTSPOTS: Hotspot[] = [
     {

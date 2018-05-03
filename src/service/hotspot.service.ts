@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 
-import { Hotspot } from './hotspot';
+import { Hotspot } from '../state/hotspot';
 
 import { HOTSPOTS } from './mock-hotspots';
 
