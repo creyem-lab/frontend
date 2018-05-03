@@ -11,3 +11,7 @@ export class HotspotAction extends Action {
 export class NewCaseAction extends Action {
   constructor(public newCase : any) { super() }
 }
+
+export class ToPosAction extends Action {
+  constructor(public toPos : any) { super() }
+}

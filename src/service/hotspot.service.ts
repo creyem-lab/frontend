@@ -1,4 +1,4 @@
-import { Injectable } from '@angular/core';
+import { Injectable, Output } from '@angular/core';
 
 import { Hotspot } from '../state/hotspot';
 
@@ -23,5 +23,6 @@ export class HotspotService {
       .get(environment.apiBase + this.url + caseId)
       .map((res) => res.json());
   }  
+
 
 }

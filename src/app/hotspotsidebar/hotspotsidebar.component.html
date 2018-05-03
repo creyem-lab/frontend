@@ -1,8 +1,8 @@
 
-<div class="card-padding" *ngFor="let hotspot of hotspots">
+<div class="card-padding" *ngFor="let hotspot of hotspots" (click)="toPos($event, hotspot)">
   <div class="card text-white bg-secondary mb-3">
     <div class="card-body">
-      <h5 class="card-title">{{hotspot.text}}</h5>
+      <h5 class="card-title" >{{hotspot.text}}</h5>
       <p class="card-text">Useful info will probz go here</p>
     </div>
   </div>

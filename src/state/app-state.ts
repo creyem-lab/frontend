@@ -2,5 +2,6 @@ import { Hotspot } from './hotspot';
 
 export interface AppState {
   cases?: any,
-  hotspots?: Hotspot[]
+  hotspots?: Hotspot[],
+  toPos?: any;
 }

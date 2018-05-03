@@ -7,7 +7,7 @@ import { Observer } from 'rxjs/Rx'
 import { CaseService } from './../service/case.service'
 import { HotspotService } from './../service/hotspot.service'
 
-import { CaseIndexAction, HotspotAction } from '../action'
+import { CaseIndexAction, HotspotAction, ToPosAction } from '../action'
 import { NewCaseAction } from '../action'
 
 @Injectable()
@@ -48,5 +48,11 @@ export class CaseStore extends Store {
       });
   }  
 
+  @action()
+  toPos(state: AppState, action: ToPosAction): ReplaceableState {
+    return new ReplaceableState({
+      toPos: action.toPos
+    });            
+  }  
 }
 

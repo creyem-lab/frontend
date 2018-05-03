@@ -4,6 +4,8 @@ import { AppState } from '../../state'
 import { HotspotService } from '../../service/hotspot.service';
 import { ActivatedRoute } from '@angular/router';
 import { Hotspot } from '../../state/hotspot';
+import { ToPosAction } from '../../action';
+import { Stores } from '../../store';
 
 export const relatedHotspots = (state: AppState) => state.hotspots
 
@@ -19,7 +21,7 @@ export class HotspotsidebarComponent extends DataObserver implements OnInit {
   @data(relatedHotspots)
   hotspots: Hotspot[];
 
-  constructor(private route: ActivatedRoute, private hotspotService: HotspotService) {
+  constructor(public stores: Stores, private route: ActivatedRoute, private hotspotService: HotspotService) {
     super()
    }
 
@@ -35,5 +37,11 @@ export class HotspotsidebarComponent extends DataObserver implements OnInit {
       .subscribe((hotspots: Hotspot[]) => {
           this.hotspots = hotspots;
       });
-}
+    }
+
+
+  public toPos(event, hotspot) {
+      console.log(hotspot.pitch);
+    new ToPosAction({ x: hotspot.pitch, y: hotspot.yaw }).dispatch();
+  }
 }
