@@ -8,6 +8,7 @@ import { CaseService } from './../service/case.service'
 import { HotspotService } from './../service/hotspot.service'
 
 import { CaseIndexAction, HotspotAction } from '../action'
+import { NewCaseAction } from '../action'
 
 @Injectable()
 export class CaseStore extends Store {
@@ -26,14 +27,25 @@ export class CaseStore extends Store {
   }  
 
   @action()
-  getHotspots(state: AppState, action: HotspotAction): Observable<AppState> {
-    return this.hotspotService
-      .fetch(action.caseId)
+  newCase(state: AppState, action: NewCaseAction): Observable<AppState> {
+    return this.caseService
+      .store(action.newCase)
       .map((data : any) => {
-        // var newState = state;
-        state.hotspots = data;
-        return state;
+        
+        state.cases = (state.cases || []).concat(action.newCase);
+        return state;  
+
     });
+  }   
+
+  @action()
+    getHotspots(state: AppState, action: HotspotAction): Observable<AppState> {
+      return this.hotspotService
+        .fetch(action.caseId)
+        .map((data : any) => {
+          state.hotspots = data;
+          return state;
+      });
   }  
 
 }

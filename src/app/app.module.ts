@@ -1,5 +1,6 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
+import { FormsModule, ReactiveFormsModule } from "@angular/forms";
 
 import { INITIAL_STATE } from '../state'
 import { STORES } from '../store'
@@ -15,6 +16,7 @@ import { ViewerComponent } from './viewer/viewer.component';
 
 import { HttpModule } from "@angular/http";
 import { HotspotsidebarComponent } from './hotspotsidebar/hotspotsidebar.component';
+import { NewcaseComponent } from './newcase/newcase.component';
 
 initialize(INITIAL_STATE, {
   hotLoad: !environment.production,
@@ -27,11 +29,14 @@ initialize(INITIAL_STATE, {
     SidebarplaceholderComponent,
     ListcasesComponent,
     ViewerComponent,
-    HotspotsidebarComponent
+    HotspotsidebarComponent,
+    NewcaseComponent
   ],
   imports: [
     BrowserModule,
     HttpModule,
+    FormsModule,
+    ReactiveFormsModule,
     RoutingModule
   ],
   providers: [STORES, SERVICES, HttpModule],
