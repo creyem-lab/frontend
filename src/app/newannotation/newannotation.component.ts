@@ -23,6 +23,8 @@ export class NewannotationComponent extends DataObserver implements OnInit {
 
   constructor(public stores: Stores, private route: ActivatedRoute, private router : Router, private hotspotService : HotspotService) {
 
+    super();
+
     this.route.params.subscribe(params => {
        this.caseId = params['id'];
     });    
