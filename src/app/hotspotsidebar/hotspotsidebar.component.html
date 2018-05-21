@@ -5,7 +5,7 @@
 
   <hr/>
 
-  <div *ngIf="!currentHotSpot">
+  <div *ngIf="!currentHotSpot" class="scrollBar">
   <h4>Cards</h4>
   <div *ngFor="let hotspot of hotspots" (click)="toPos($event, hotspot)">
     <div class="card">

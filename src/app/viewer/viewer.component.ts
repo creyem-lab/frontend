@@ -46,34 +46,43 @@ export class ViewerComponent extends DataObserver implements OnInit {
                         type: hotspot.hotspotType,
                         text: hotspot.text
                     })
-                })
+                });
                 this.hotspots = hotspots;
 
-                this.view = pannellum.viewer('panoramaContainer', {
-                     "type": "equirectangular",
-                    "panorama": "https://cryemlab.blob.core.windows.net/cases/" + this.caseId + ".jpg",
-                    "autoLoad": true,
-                    "hotSpots": this.hotspots
+                this.route.queryParams.subscribe(params => {
+                    var pitch = params['pitch'];
+                    var yaw = params['yaw'];
+
+                    this.view = pannellum.viewer('panoramaContainer', {
+                        "type": "equirectangular",
+                        "panorama": "https://cryemlab.blob.core.windows.net/cases/" + this.caseId + ".jpg",
+                        "autoLoad": true,
+                        "hotSpots": this.hotspots,
+                        "pitch" : pitch || 0,
+                        "yaw" : yaw || 0
+                    });
+
+                    var viewer = this.view;
+                    var appRouter = this.router;
+                    var currentRoute = this.route;
+                    var currentCaseId = this.caseId; 
+
+                    this.view.on('mouseup', function(event, args) {
+
+                        if (event.button != 2) return;
+
+                        let pitchYaw = viewer.mouseEventToCoords(event);
+                        appRouter.navigateByUrl("/case/" + currentCaseId + "/annotation?pitch=" + pitchYaw[0] + "&yaw=" + pitchYaw[1]);
+                    });                    
+
                 });
-
-                var viewer = this.view;
-                var appRouter = this.router;
-                var currentRoute = this.route;
-                var currentCaseId = this.caseId; 
-
-                this.view.on('mouseup', function(event, args) {
-
-                    if (event.button != 0) return;
-
-                    let pitchYaw = viewer.mouseEventToCoords(event);
-                    appRouter.navigateByUrl("/case/" + currentCaseId + "/annotation?pitch=" + pitchYaw[0] + "&yaw=" + pitchYaw[1]);
-                })
             });
     }
 
   @data(selectState)     // works with functions to allow complex calculations
   todosDidChange(state: any) {
-      if(this.view != null){
+
+      if(this.view != null){        
         this.view.lookAt(state.x, state.y, undefined, 1000);
       }
   }
