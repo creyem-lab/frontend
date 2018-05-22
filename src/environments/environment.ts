@@ -5,5 +5,5 @@
 
 export const environment = {
   production: false,
-  apiBase: 'http://localhost:5000'
+  apiBase: 'https://creyem-lab-api.herokuapp.com'
 };

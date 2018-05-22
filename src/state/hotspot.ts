@@ -5,6 +5,7 @@ export class Hotspot {
     hotspotType: string;
     createTooltipFunc?: Function;
     text: string;
+    displayDate?: string;
     created_at?: string;
 
     

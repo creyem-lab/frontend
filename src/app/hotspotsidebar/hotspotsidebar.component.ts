@@ -37,6 +37,14 @@ export class HotspotsidebarComponent extends DataObserver implements OnInit {
   getHotSpots(): void {
     this.hotspotService.fetch(this.caseId)
       .subscribe((hotspots: Hotspot[]) => {
+
+          hotspots.forEach(element => {
+            
+            let createdDate = new Date(element.created_at);
+            element.displayDate = createdDate.toLocaleDateString() + " " + createdDate.toLocaleTimeString();
+
+          });
+
           this.hotspots = hotspots;
       });
     }

@@ -6,12 +6,12 @@
   <hr/>
 
   <div *ngIf="!currentHotSpot" class="scrollBar">
-  <h4>Cards</h4>
+  <h4>Points of interest</h4>
+  <hr/>
   <div *ngFor="let hotspot of hotspots" (click)="toPos($event, hotspot)">
     <div class="card">
       <div class="card-body">
         <h5 class="card-title" >{{hotspot.text}}</h5>
-        <p class="card-text">{{hotspot.hotspotType}}</p>
       </div>
     </div> 
     <br/> 
@@ -24,12 +24,13 @@
     <div class="card">
       <div class="card-body">
         <h5 class="card-title">{{currentHotSpot.text}}</h5>
-        <h6 class="card-title">Submitted at {{currentHotSpot.created_at}}</h6>
-        <p>Relevant Evidence:</p>
-        <ul>
-            <li>Fingerprints</li>
-            <li>Footprints</li>
-        </ul>
+        <h6 class="card-title">Submitted at {{currentHotSpot.displayDate}}</h6>
+        <p>NICHE Reference:</p>
+        <p *ngIf="currentHotSpot.text == 'Knife'">465/4466992</p>
+        <p *ngIf="currentHotSpot.text == 'Ammunition'">465/4466993</p>
+        <p *ngIf="currentHotSpot.text == 'Shotgun'">465/4466994</p>
+        <p *ngIf="currentHotSpot.text == 'Suspicious Documents'">465/4466995</p>
+        <p *ngIf="currentHotSpot.text == 'Suspicious Powder'">465/4466996</p>
       </div>
     </div>
   </div>
