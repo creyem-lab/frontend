@@ -1,4 +1,4 @@
 export const environment = {
-  production: true,
+  production: false,
   apiBase: 'https://creyem-lab-api.herokuapp.com'
 };

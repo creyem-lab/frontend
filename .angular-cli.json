@@ -1,8 +1,7 @@
 {
   "$schema": "./node_modules/@angular/cli/lib/config/schema.json",
   "project": {
-    "name": "creyem-lab-frontend",
-    "ejected": true
+    "name": "creyem-lab-frontend"
   },
   "apps": [
     {
@@ -24,6 +23,7 @@
       "environmentSource": "environments/environment.ts",
       "environments": {
         "dev": "environments/environment.ts",
+        "azure": "environments/environment.azure.ts",
         "prod": "environments/environment.prod.ts"
       }
     }
